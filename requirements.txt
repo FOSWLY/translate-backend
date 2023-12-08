@@ -1,5 +1,5 @@
 fastapi[all]>=0.104.1
-uvicorn>=0.24.0.post1
+granian>=0.21.0
 pydantic>=2.4.2
 pydantic-settings>=2.0.3
 rich>=13.7.0
