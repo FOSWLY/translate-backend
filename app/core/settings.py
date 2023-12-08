@@ -2,12 +2,14 @@ import logging
 
 from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from granian.constants import ThreadModes
 
 
 class Settings(BaseSettings):
     # - server section -
     port: int = 3313
     address: str = '0.0.0.0'
+    threading_mode: ThreadModes = ThreadModes.runtime # experiment on your server, it may increase/decrease performance
 
     # - logging section -
     log_level: int = logging.INFO # level of logs (DEBUG, INFO, WARNING, ERROR, CRITICAL)
