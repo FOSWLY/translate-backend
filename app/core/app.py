@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 
 from core.settings import get_settings
+from core.logger import init_logging
+from routes import api_router
 
 settings = get_settings()
 tags_meta = [
@@ -53,3 +55,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.openapi = custom_openapi
+
+app.include_router(api_router)
+app.add_event_handler('startup', init_logging)
