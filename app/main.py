@@ -1,21 +1,22 @@
-import asyncio
-import uvicorn
+import logging
+import multiprocessing
+from granian.server import Granian
+from granian.constants import Interfaces
 
 from core.settings import get_settings
-from server import start
 
 settings = get_settings()
 
-async def main():
-    app = await start()
-    config = uvicorn.Config(
-        app,
-        host=settings.address,
-        port=settings.port,
-        log_level=settings.log_level,
-    )
-    server = uvicorn.Server(config)
-    return await server.serve()
+def count_workers():
+    return (multiprocessing.cpu_count() * 2) + 1
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    Granian(
+        "core.app:app",
+        address=settings.address,
+        port=settings.port,
+        interface=Interfaces.ASGI,
+        log_level=logging.getLevelName(settings.log_level).lower(),
+        threads=count_workers(),
+        threading_mode=settings.threading_mode
+    ).serve()
