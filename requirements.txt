@@ -1,5 +1,5 @@
 fastapi[all]>=0.104.1
-granian>=0.21.0
+granian>=0.7.3
 pydantic>=2.4.2
 pydantic-settings>=2.0.3
 rich>=13.7.0
