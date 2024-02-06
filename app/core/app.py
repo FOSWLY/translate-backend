@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from hyperdx.opentelemetry import configure_opentelemetry, HyperDXOptions
 
 from core.settings import get_settings
 from core.logger import init_logging
@@ -56,5 +57,16 @@ app.add_middleware(
 )
 app.openapi = custom_openapi
 
+def on_startup():
+    init_logging()
+    if settings.hyperdx_api_key:
+        configure_opentelemetry(
+            HyperDXOptions(
+                service_name = settings.hyperdx_service_name,
+                service_version = settings.app_version,
+                apikey = settings.hyperdx_api_key
+            )
+        )
+
 app.include_router(api_router)
-app.add_event_handler('startup', init_logging)
+app.add_event_handler('startup', on_startup)
