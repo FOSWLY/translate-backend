@@ -4,3 +4,4 @@ pydantic>=2.4.2
 pydantic-settings>=2.0.3
 rich>=13.7.0
 httpx>=0.25.2
+hyperdx-opentelemetry>=0.0.5
