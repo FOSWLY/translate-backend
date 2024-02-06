@@ -4,6 +4,7 @@ import sys
 import rich
 
 from datetime import datetime
+from logging.handlers import RotatingFileHandler
 from rich.logging import RichHandler
 from rich.theme import Theme
 from rich.style import Style
@@ -49,8 +50,13 @@ def init_logging():
 
     log_handlers = [stdout_handler]
     if settings.log_save:
-        log_name = f'./logs/main{datetime.now().strftime("%Y%m%d")}.log'
-        filehandler = logging.FileHandler(log_name, encoding='utf-8')
+        log_name = f'./logs/{datetime.now().strftime("%Y-%m-%d")}.log'
+        filehandler = RotatingFileHandler(
+            log_name,
+            maxBytes=settings.log_max_size * 1000000,
+            backupCount=settings.log_max_saved_log,
+            encoding='utf-8'
+        )
         filehandler.setLevel(settings.log_level)
         log_handlers.append(filehandler) # type: ignore
 
@@ -63,5 +69,7 @@ def init_logging():
     )
 
     logging.captureWarnings(True)
+    if settings.log_level != logging.DEBUG:
+        logging.getLogger("httpx").setLevel(logging.WARNING)
 
     return True
