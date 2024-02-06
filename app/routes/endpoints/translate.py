@@ -18,8 +18,10 @@ async def translate_text(body: TranslateRequest) -> TranslateSuccessResponse|Tra
 
 @router.post('/detect')
 async def detect_lang(body: DetectRequest) -> DetectResponse:
-    return await YandexTranslate().detect(body.text)
-
+    res = await YandexTranslate().detect(body.text)
+    if res['lang'] == '':
+        logger.info(f'Unknown language detected. Entered text: "{body.text}".')
+    return res
 
 @router.get('/langs')
 async def get_langs() -> GetLangsResponse:
