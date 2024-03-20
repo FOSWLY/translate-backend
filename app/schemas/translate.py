@@ -28,6 +28,9 @@ class TranslateSuccessResponse(BaseYandexResponse):
 
 
 class TranslateErrorResponse(BaseYandexResponse):
+    code: int = Field(
+        examples=[400]
+    )
     message: str = Field(
         examples=['Invalid parameter: lang', 'Invalid parameter: text'],
         description='Description of error'
