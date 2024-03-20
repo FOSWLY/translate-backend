@@ -46,7 +46,7 @@ def custom_openapi():
     return app.openapi_schema
 
 
-app = FastAPI(openapi_url = '/openapi.json', docs_url = '/docs', redoc_url = '/redoc')
+app = FastAPI(openapi_url = '/openapi.json', docs_url = None, redoc_url = None)
 app.mount('/static', StaticFiles(directory = 'static'), name = 'static')
 app.add_middleware(
     CORSMiddleware,

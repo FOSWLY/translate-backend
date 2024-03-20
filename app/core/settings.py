@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     # - app section -
     app_name: str = '[FOSWLY] Translate'
     app_desc: str = '[FOSWLY] Translate is Free Yandex Translate API without any authorization or restrictions.'
-    app_version: str = '1.0.3'
+    app_version: str = '1.0.4'
     app_license: str = 'MIT'
     app_developer_url: str = 'https://github.com/FOSWLY/translate-backend'
     app_developer_email: str = 'me@toil.cc'
