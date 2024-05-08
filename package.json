@@ -7,8 +7,8 @@
     "url": "git+https://github.com/FOSWLY/translate-backend"
   },
   "scripts": {
-    "dev": "NODE_ENV=development bun run --watch src/index.ts",
-    "start": "NODE_ENV=production bun src/index.ts",
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun src/index.ts",
     "prepare": "husky"
   },
   "dependencies": {
