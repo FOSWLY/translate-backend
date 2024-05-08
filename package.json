@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@bogeychan/elysia-logger": "^0.0.21",
+    "@elysiajs/cors": "^1.0.2",
     "@elysiajs/swagger": "^1.0.4",
     "elysia": "^1.0.15",
     "pino-pretty": "^11.0.0"

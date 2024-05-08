@@ -9,8 +9,10 @@ import setupElysia, { log } from "./setup";
 import { InternalServerError, UnableAccessYandexAPI } from "./errors";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
+import { cors } from "@elysiajs/cors";
 
 const app = new Elysia()
+  .use(cors())
   .use(
     swagger({
       path: "/docs",
