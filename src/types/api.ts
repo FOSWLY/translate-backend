@@ -1,14 +1,3 @@
-// export type TranslationEndpoint = "detect" | "translate" | "getLangs";
-
-// export type TranslationParams = {
-//   lang?: Lang | LangPair;
-//   text?: string;
-// };
-
-// export type Lang = string;
-
-// export type LangPair = `${Lang}-${Lang}`;
-
 import { Static, t } from "elysia";
 
 export type EmptyObj = Record<PropertyKey, never>;
