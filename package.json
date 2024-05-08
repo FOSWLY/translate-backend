@@ -1,0 +1,38 @@
+{
+  "name": "translate-backend",
+  "version": "2.0.0",
+  "author": "Toil",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FOSWLY/translate-backend"
+  },
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun src/index.ts",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@bogeychan/elysia-logger": "^0.0.21",
+    "@elysiajs/swagger": "^1.0.4",
+    "elysia": "^1.0.15",
+    "pino-pretty": "^11.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "bun-types": "latest",
+    "eslint": "^8.57.0",
+    "eslint-plugin-oxlint": "^0.2.4",
+    "eslint-plugin-sonarjs": "^0.25.1",
+    "husky": "^9.0.11",
+    "oxlint": "^0.2.14"
+  },
+  "module": "src/index.js",
+  "bun-create": {
+    "start": "bun run src/index.ts"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
