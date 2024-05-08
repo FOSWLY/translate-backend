@@ -5,6 +5,10 @@ import { formatters, pino, createPinoLogger } from "@bogeychan/elysia-logger";
 import type { DestinationStream } from "pino";
 import pinnoPretty from "pino-pretty";
 
+import * as fs from "fs";
+
+import { mkdir } from "node:fs/promises";
+
 import config from "./config";
 
 const stream = pinnoPretty({
@@ -20,6 +24,10 @@ const pinoOpts = {
     },
   },
 };
+
+if (!fs.existsSync(config.logging.logPath)) {
+  await mkdir(config.logging.logPath, { recursive: true });
+}
 
 const startingDate = new Date().toISOString().split("T")[0];
 const fileDestination = config.logging.logSave

@@ -1,10 +1,6 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 
-import * as fs from "fs";
-
-import { mkdir } from "node:fs/promises";
-
 import config from "./config";
 
 import health from "./controllers/health";
@@ -13,11 +9,6 @@ import setupElysia, { log } from "./setup";
 import { InternalServerError, UnableAccessYandexAPI } from "./errors";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
-
-if (!fs.existsSync(config.logging.logPath)) {
-  await mkdir(config.logging.logPath, { recursive: true });
-  log.info(`Created log directory`);
-}
 
 const app = new Elysia()
   .use(
