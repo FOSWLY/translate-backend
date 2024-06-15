@@ -1,5 +1,6 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
+import { cors } from "@elysiajs/cors";
 
 import config from "./config";
 
@@ -9,13 +10,13 @@ import setupElysia, { log } from "./setup";
 import { InternalServerError, UnableAccessYandexAPI } from "./errors";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
-import { cors } from "@elysiajs/cors";
 
 const app = new Elysia()
   .use(cors())
   .use(
     swagger({
       path: "/docs",
+      scalarCDN: config.app.scalarCDN,
       documentation: {
         info: {
           title: config.app.name,

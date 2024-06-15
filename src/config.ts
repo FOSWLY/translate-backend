@@ -14,6 +14,7 @@ export default {
     license: "MIT",
     github_url: "https://github.com/FOSWLY/translate-backend",
     contact_email: "me@toil.cc",
+    scalarCDN: "https://unpkg.com/@scalar/api-reference@1.15.1/dist/browser/standalone.js",
   },
   logging: {
     level: LoggerLevel.INFO,
