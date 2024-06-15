@@ -4,7 +4,7 @@ import { version } from "../package.json";
 
 export default {
   server: {
-    port: 3313,
+    port: Bun.env.SERVICE_PORT ?? 3313,
     hostname: "0.0.0.0",
   },
   app: {
