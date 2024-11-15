@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "translate-backend",
+      "script": "bun",
+      "args": "run start"
+    }
+  ]
+}
