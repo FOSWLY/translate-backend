@@ -17,6 +17,7 @@ const app = new Elysia()
       documentation: {
         info: {
           title: config.app.name,
+          description: config.app.desc,
           version: config.app.version,
           license: {
             name: config.app.license,
