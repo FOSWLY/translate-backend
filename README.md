@@ -59,7 +59,7 @@ bun start
 1. Установите зависимости:
 
 ```bash
-bun install -g pm2 && pm2 install pm2-logrotate
+bun install -g pm2-beta && pm2 install pm2-logrotate
 ```
 
 2. Запустите сервер
