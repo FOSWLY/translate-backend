@@ -17,7 +17,7 @@ if (!(await fs.exists(config.logging.logPath))) {
 }
 
 const app = new Elysia({
-  prefix: "/v2.1",
+  prefix: "/v2",
 })
   .use(
     swagger({
@@ -25,7 +25,7 @@ const app = new Elysia({
       scalarCDN: config.app.scalarCDN,
       scalarConfig: {
         spec: {
-          url: "/v2.1/docs/json",
+          url: "/v2/docs/json",
         },
       },
       documentation: {
