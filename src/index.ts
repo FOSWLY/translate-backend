@@ -1,3 +1,5 @@
+import fs from "node:fs/promises";
+
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 
@@ -8,6 +10,11 @@ import health from "./controllers/health";
 import translate from "./controllers/translate";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
+
+if (!(await fs.exists(config.logging.logPath))) {
+  await fs.mkdir(config.logging.logPath, { recursive: true });
+  log.info(`Created log directory`);
+}
 
 const app = new Elysia()
   .use(
