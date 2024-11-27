@@ -16,11 +16,18 @@ if (!(await fs.exists(config.logging.logPath))) {
   log.info(`Created log directory`);
 }
 
-const app = new Elysia()
+const app = new Elysia({
+  prefix: "/v2.1",
+})
   .use(
     swagger({
       path: "/docs",
       scalarCDN: config.app.scalarCDN,
+      scalarConfig: {
+        spec: {
+          url: "/v2.1/docs/json",
+        },
+      },
       documentation: {
         info: {
           title: config.app.name,
