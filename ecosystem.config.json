@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "translate-backend",
+      "namespace": "FOSWLY",
+      "script": "bun",
+      "args": "run start"
+    }
+  ]
+}
