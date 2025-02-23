@@ -1,3 +1,9 @@
+# 2.1.1
+
+- Добавлена поддержка YandexGPT Translate, Bing Translate и Libre Translate (по умолчанию выключен)
+- Обновлена версия Scalar
+- Обновлены зависимости
+
 # 2.1.0
 
 > [!WARNING]
