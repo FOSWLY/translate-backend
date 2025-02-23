@@ -10,6 +10,8 @@ import health from "./controllers/health";
 import translate from "./controllers/translate";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
+import { LibreTransalteDisabledError } from "./errors";
+import { HttpStatusCode } from "elysia-http-status-code";
 
 if (!(await fs.exists(config.logging.logPath))) {
   await fs.mkdir(config.logging.logPath, { recursive: true });
@@ -45,12 +47,16 @@ const app = new Elysia({
       },
     }),
   )
+  .use(HttpStatusCode())
   .onRequest(({ set }) => {
     for (const [key, val] of Object.entries(config.cors)) {
       set.headers[key] = val;
     }
   })
-  .onError(({ code, error }) => {
+  .error({
+    LIBRE_TRANSLATE_DISABLED: LibreTransalteDisabledError,
+  })
+  .onError(({ set, code, error, httpStatus }) => {
     switch (code) {
       case "NOT_FOUND":
         return {
@@ -58,6 +64,9 @@ const app = new Elysia({
         };
       case "VALIDATION":
         return error.all;
+      case "LIBRE_TRANSLATE_DISABLED":
+        set.status = httpStatus.HTTP_403_FORBIDDEN;
+        break;
     }
 
     log.error(

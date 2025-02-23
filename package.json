@@ -1,6 +1,6 @@
 {
   "name": "translate-backend",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Toil",
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "@elysiajs/swagger": "^1.2.2",
     "@toil/translate": "^1.0.6",
     "elysia": "^1.2.21",
+    "elysia-http-status-code": "^1.0.9",
     "pino": "^9.6.0",
     "pino-loki": "^2.5.0"
   },

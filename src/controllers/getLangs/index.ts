@@ -1,20 +1,10 @@
 import { Elysia } from "elysia";
 
-import TranslationClient from "@toil/translate";
-
 import { GetLangsParams, GetLangsSuccessResponse } from "@/models/translate.model";
-import config from "@/config";
-
-const {
-  app: { allowUnsafeEval },
-} = config;
+import { createClient } from "@/utils/client";
 
 async function getLangs({ service }: GetLangsParams) {
-  const client = new TranslationClient({
-    service,
-    allowUnsafeEval,
-  });
-
+  const client = createClient(service);
   return await client.getLangs();
 }
 
