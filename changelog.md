@@ -1,3 +1,7 @@
+# 2.1.2
+
+- Добавлена проверка на allowUnsafeEval при создание клиента перевода
+
 # 2.1.1
 
 - Добавлена поддержка YandexGPT Translate, Bing Translate и Libre Translate (по умолчанию выключен)
