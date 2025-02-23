@@ -5,6 +5,7 @@ declare module "bun" {
     APP_NAME: string;
     APP_DESC: string;
     APP_CONTACT_EMAIL: string;
+    ALLOW_UNSAFE_EVAL: string;
     LOKI_HOST: string;
     LOKI_USER: string;
     LOKI_PASSWORD: string;

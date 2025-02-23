@@ -13,6 +13,7 @@ export default Value.Parse(ConfigSchema, {
     name: Bun.env.APP_NAME,
     desc: Bun.env.APP_DESC,
     contact_email: Bun.env.APP_CONTACT_EMAIL,
+    allowUnsafeEval: Bun.env.ALLOW_UNSAFE_EVAL === "true",
   },
   cors: {
     "Access-Control-Allow-Origin": "*",

@@ -1,6 +1,6 @@
 {
   "name": "translate-backend",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "author": "Toil",
   "repository": {
     "type": "git",
@@ -13,21 +13,21 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@elysiajs/swagger": "^1.1.6",
-    "@toil/translate": "^1.0.3",
-    "elysia": "^1.1.25",
-    "pino": "^9.5.0",
-    "pino-loki": "^2.3.1"
+    "@elysiajs/swagger": "^1.2.2",
+    "@toil/translate": "^1.0.6",
+    "elysia": "^1.2.21",
+    "pino": "^9.6.0",
+    "pino-loki": "^2.5.0"
   },
   "devDependencies": {
-    "@sinclair/typebox": "^0.34.9",
-    "bun-types": "^1.1.37",
-    "eslint": "^9.15.0",
-    "eslint-plugin-oxlint": "^0.13.2",
+    "@sinclair/typebox": "^0.34.28",
+    "bun-types": "^1.2.3",
+    "eslint": "^9.21.0",
+    "eslint-plugin-oxlint": "^0.15.11",
     "husky": "^9.1.7",
-    "oxlint": "^0.13.2",
+    "oxlint": "^0.15.11",
     "pino-pretty": "^13.0.0",
-    "typescript-eslint": "^8.16.0"
+    "typescript-eslint": "^8.24.1"
   },
   "module": "src/index.js",
   "bun-create": {

@@ -17,7 +17,7 @@ export const LoggingLevel = t.Union(
 );
 
 const license = "MIT";
-const scalarCDN = "https://unpkg.com/@scalar/api-reference@1.25.64/dist/browser/standalone.js";
+const scalarCDN = "https://unpkg.com/@scalar/api-reference@1.25.122/dist/browser/standalone.js";
 
 export const ConfigSchema = t.Object({
   server: t.Object({
@@ -37,6 +37,7 @@ export const ConfigSchema = t.Object({
     }),
     contact_email: t.String({ default: "me@toil.cc" }),
     scalarCDN: t.Literal(scalarCDN, { readOnly: true, default: scalarCDN }),
+    allowUnsafeEval: t.Boolean({ default: false }),
   }),
   cors: t.Object({
     "Access-Control-Allow-Origin": t.String({ default: "*" }),

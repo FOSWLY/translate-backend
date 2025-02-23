@@ -17,8 +17,10 @@
 
 Список поддерживаемых провайдеров:
 
-- Yandex (YandexBrowser, YandexCloud, YandexTranslate)
+- Yandex (YandexBrowser, YandexCloud, YandexTranslate, YandexGPT)
 - MSEdge
+- Bing
+- LibreTranslate
 
 Чтобы указать какой-то конкретный провайдер вам необходимо передать параметр `service`, соответствующий необходимому сервису. У разных провайдеров разные лимиты, учитывайте это при запросе.
 
