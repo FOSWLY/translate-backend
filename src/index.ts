@@ -2,6 +2,8 @@ import fs from "node:fs/promises";
 
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
+import { cors } from "@elysiajs/cors";
+import { HttpStatusCode } from "elysia-http-status-code";
 
 import config from "./config";
 import { log } from "./logging";
@@ -11,7 +13,6 @@ import translate from "./controllers/translate";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
 import { LibreTransalteDisabledError } from "./errors";
-import { HttpStatusCode } from "elysia-http-status-code";
 
 if (!(await fs.exists(config.logging.logPath))) {
   await fs.mkdir(config.logging.logPath, { recursive: true });
@@ -48,11 +49,7 @@ const app = new Elysia({
     }),
   )
   .use(HttpStatusCode())
-  .onRequest(({ set }) => {
-    for (const [key, val] of Object.entries(config.cors)) {
-      set.headers[key] = val;
-    }
-  })
+  .use(cors(config.cors))
   .error({
     LIBRE_TRANSLATE_DISABLED: LibreTransalteDisabledError,
   })
