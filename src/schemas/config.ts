@@ -1,4 +1,5 @@
 import { Type as t, type Static } from "@sinclair/typebox";
+import { Config as LoggingConfig } from "@vaylo/pino/schema";
 
 import { version } from "../../package.json";
 
@@ -40,21 +41,12 @@ export const ConfigSchema = t.Object({
     allowUnsafeEval: t.Boolean({ default: false }),
   }),
   cors: t.Object({
-    "Access-Control-Allow-Origin": t.String({ default: "*" }),
-    "Access-Control-Allow-Headers": t.String({ default: "*" }),
-    "Access-Control-Allow-Methods": t.String({ default: "POST, GET, OPTIONS" }),
-    "Access-Control-Max-Age": t.String({ default: "86400" }),
+    allowedHeaders: t.String({ default: "*" }),
+    origin: t.String({ default: "*" }),
+    methods: t.String({ default: "GET, POST, OPTIONS" }),
+    maxAge: t.Number({ default: 86400 }),
   }),
-  logging: t.Object({
-    level: LoggingLevel,
-    logPath: t.String(),
-    loki: t.Object({
-      host: t.String({ default: "" }),
-      user: t.String({ default: "" }),
-      password: t.String({ default: "" }),
-      label: t.String({ default: "translate-backend" }),
-    }),
-  }),
+  logging: LoggingConfig,
 });
 
 export type ConfigSchemaType = Static<typeof ConfigSchema>;

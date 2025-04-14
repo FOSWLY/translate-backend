@@ -24,11 +24,12 @@ export default Value.Parse(ConfigSchema, {
   logging: {
     level: Bun.env.NODE_ENV === "production" ? "info" : "debug",
     logPath: path.join(__dirname, "..", "logs"),
+    logToFile: Bun.env.LOG_TO_FILE === "true",
     loki: {
       host: Bun.env.LOKI_HOST,
       user: Bun.env.LOKI_USER,
       password: Bun.env.LOKI_PASSWORD,
-      label: Bun.env.LOKI_LABEL,
+      label: Bun.env.LOKI_LABEL ?? "translate-backend",
     },
   },
 });
