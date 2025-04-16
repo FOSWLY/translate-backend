@@ -1,5 +1,3 @@
-import fs from "node:fs/promises";
-
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { cors } from "@elysiajs/cors";
@@ -13,11 +11,6 @@ import translate from "./controllers/translate";
 import detect from "./controllers/detect";
 import getLangs from "./controllers/getLangs";
 import { LibreTransalteDisabledError } from "./errors";
-
-if (!(await fs.exists(config.logging.logPath))) {
-  await fs.mkdir(config.logging.logPath, { recursive: true });
-  log.info(`Created log directory`);
-}
 
 const app = new Elysia({
   prefix: "/v2",
