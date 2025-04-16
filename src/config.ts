@@ -15,12 +15,7 @@ export default Value.Parse(ConfigSchema, {
     contact_email: Bun.env.APP_CONTACT_EMAIL,
     allowUnsafeEval: Bun.env.ALLOW_UNSAFE_EVAL === "true",
   },
-  cors: {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Max-Age": "86400",
-  },
+  cors: {},
   logging: {
     level: Bun.env.NODE_ENV === "production" ? "info" : "debug",
     logPath: path.join(__dirname, "..", "logs"),
